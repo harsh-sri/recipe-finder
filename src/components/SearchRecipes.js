@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import { setRecipes } from '../actions/index';
 
+import { request } from '../services/NetworkService';
+
 class SearchRecipes extends Component {
 
     constructor () {
@@ -17,21 +19,18 @@ class SearchRecipes extends Component {
 
     search () {
         let { ingredients, dish } = this.state;
-        //const URL = `http://www.recipepuppy.com/api/?i=${ingredients.replace(/ /g,'')}&q=${dish.trim()}`;
         const URL = 'http://www.json-generator.com/api/json/get/cgkFlyLYVu?indent=2';
-        console.log('state: ', this.state, 'url: ', URL);
-        // now use Fetch method to call the API
         let params = {
             method: 'GET'
         };
-
-        fetch(URL, {method:'GET'})
-        .then(resp => resp.json())
-        .then(json => {
-            this.props.setRecipes(json.results)
-        })
-        .catch(err => console.log('Err: ', err));
         
+        request (URL, params)
+        .then(response => response.json())
+        .then(json => {
+            console.log('Using Network Service: ', json);
+            this.props.setRecipes(json.results);
+        })  
+        .catch(err => console.log('err: ', err));
     }
     render() {
         return (
