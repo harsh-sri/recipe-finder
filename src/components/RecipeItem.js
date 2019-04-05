@@ -1,3 +1,4 @@
+// File Desc: this is Recipe Item Component
 import React, { Component } from 'react';
 
 class RecipeItem extends Component {
