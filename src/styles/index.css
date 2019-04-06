@@ -33,3 +33,9 @@ body {
     margin: 15px;
     cursor: pointer;
 }
+
+.Link {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}

@@ -24,12 +24,17 @@ class RecipeItem extends Component {
         return (
             <div className="recipe-item">
                 {
-                    this.state.favorited ?
-                        <div>&#9733;</div>
-                        : 
-                        <div className="star" onClick={() => this.markFavorite(recipe)}>
-                            &#9734;
-                        </div>
+                    this.props.favoriteButton ?
+                        (
+                            this.state.favorited ?
+                                <div>&#9733;</div>
+                            : 
+                                <div className="star" onClick={() => this.markFavorite(recipe)}>
+                                    &#9734;
+                                </div>
+                        )
+                    :
+                    <div></div>
                 }
                 <div>
                     <a href={recipe.href}>
