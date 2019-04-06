@@ -27,3 +27,9 @@ body {
     border: 1px solid black;
     border-radius: 2px;
 }
+
+.start {
+    font-size: 20px;
+    margin: 15px;
+    cursor: pointer;
+}
